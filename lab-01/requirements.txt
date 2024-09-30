@@ -1,0 +1,11 @@
+requests
+openai
+streamlit
+langchain
+langchain-openai
+langchain-community
+langchain-text-splitters
+azure-core
+azure-search-documents
+pypdf
+python-dotenv
