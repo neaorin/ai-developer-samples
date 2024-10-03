@@ -51,27 +51,6 @@ tools = [
                 "required": ["order_id"],
             }
         }
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "loan_simulation",
-            "description": "Simulate a personal loan. Return monthly payments and total amount paid based on amount borrowed, duration in months, and annual interest rate.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "amount_borrowed": {
-                        "type": "integer",
-                        "description": "The amount borrowed",
-                    },
-                    "duration_in_months": {
-                        "type": "integer",
-                        "description": "The loan duration in months, default value is 12",
-                    }
-                },
-                "required": ["amount_borrowed"],
-            },
-        }
     }
 ]
 
@@ -81,20 +60,6 @@ def order_status(order_id):
     # Simulate a random order status
     return random.choice(["shipped", "delivered", "in transit", "delayed"])
 
-def loan_simulation(amount_borrowed, duration_in_months, annual_interest_rate):
-    # Convert annual interest rate to monthly and in decimal form
-    monthly_interest_rate = (annual_interest_rate / 100) / 12
-
-    # Calculate monthly payment
-    if monthly_interest_rate > 0:
-        monthly_payment = (amount_borrowed * monthly_interest_rate) / (1 - (1 + monthly_interest_rate) ** -duration_in_months)
-    else:
-        monthly_payment = amount_borrowed / duration_in_months
-
-    # Calculate total amount paid
-    total_amount_paid = monthly_payment * duration_in_months
-
-    return f'monthly payment is {monthly_payment}, total amount you pay is {total_amount_paid}'
 
 # This is callback function used further down for user to explicitly approve function call
 def save_fn_call():
@@ -146,16 +111,7 @@ if tool_calls := st.session_state.messages[-1].get("tool_calls", {}):
     tool_call_id = tool_calls[0].id
     fn = tool_calls[0].function
     func_name = fn.name
-    if func_name == "loan_simulation":
-        amount_borrowed = json.loads(fn.arguments).get("amount_borrowed", "")
-        duration_in_months = json.loads(fn.arguments).get("duration_in_months", 12)
-        results = loan_simulation(amount_borrowed, duration_in_months, 6)
-        last_status.write(results)
-        st.session_state.messages.append(
-            {"role": "tool", "tool_call_id": tool_call_id, "name": func_name, "content": results}
-        )
-        last_status.update(state="complete")
-    elif func_name == "order_status":
+    if func_name == "order_status":
         order_id = json.loads(fn.arguments).get("order_id", "")
         results = order_status(order_id)
         last_status.write(results)
