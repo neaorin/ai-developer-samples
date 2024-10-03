@@ -1,3 +1,6 @@
+# Demo 01: Azure OpenAI Function calling
+# Executa acest demo cu comanda: streamlit run 01-demo-functions.py
+
 import json
 import time
 import os
@@ -175,7 +178,7 @@ if prompt or new_function_response:
         resp_container = st.empty()
         func_name = ""
         response1 = client.chat.completions.create(
-            model="gpt-4",
+            model=AZURE_OPENAI_CHAT_DEPLOYMENT_NAME,
             messages=st.session_state.messages,
             tools=tools,
             tool_choice="auto",
