@@ -44,7 +44,7 @@ source .venv/bin/activate
 Dacă ați făcut totul corect, ar trebui să aveți un prompt care indică faptul că environmentul a fost activat:
 
 ```
-(.venv) C:\...\lab-01>
+(.venv) C:\...\modul-07>
 ```
 
 ### Instalați librăriile necesare
@@ -76,7 +76,7 @@ AZURE_OPENAI_CHAT_DEPLOYMENT_NAME=
 
 ![Finding Azure Open AI Service Endpoint and Key](https://user-images.githubusercontent.com/26411726/225185239-6d1f3058-531c-4c7e-9496-8c2956d23f5d.png)
 
-## Laborator
+## Exemple
 
 Continuați cu primul exemplu din acest modul, `01-demo-functions.py`
 
