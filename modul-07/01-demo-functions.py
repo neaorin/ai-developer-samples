@@ -174,7 +174,7 @@ if prompt or new_function_response:
             else:
                 # Persist pending call and rerun for auto-function run
                 save_fn_call()
-                st.experimental_rerun()
+                st.rerun()
         elif response:
             st.session_state.messages.append({"role": "assistant", "content": response})
 
