@@ -6,6 +6,7 @@ langchain-openai
 langchain-community
 langchain-text-splitters
 azure-core
+azure-identity
 azure-search-documents
 pypdf
 python-dotenv
