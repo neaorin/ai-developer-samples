@@ -80,7 +80,11 @@ AZURE_SPEECH_API_REGION=
 AZURE_SPEECH_API_KEY=
 ```
 
+Localizare Endpoint și Key pentru Azure Open AI Service, în Azure Portal: 
+
 ![Finding Azure Open AI Service Endpoint and Key](https://user-images.githubusercontent.com/26411726/225185239-6d1f3058-531c-4c7e-9496-8c2956d23f5d.png)
+
+Localizare Region (nu Endpoint!) și Key pentru Azure Speech Service, în Azure Portal:
 
 ![Finding Azure Speech Service region and Key](https://itnextspeechst.z13.web.core.windows.net/img/speech-keys.png)
 
