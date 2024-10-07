@@ -1,0 +1,6 @@
+openai
+python-dotenv
+ipython
+opencv-python
+moviepy
+azure-cognitiveservices-speech
