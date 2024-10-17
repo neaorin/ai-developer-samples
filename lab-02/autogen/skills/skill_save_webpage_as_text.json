@@ -1,0 +1,8 @@
+{
+    "user_id": "guestuser@gmail.com",
+    "version": "0.0.1",
+    "name": "save_webpage_as_text",
+    "content": "import requests\nfrom bs4 import BeautifulSoup\n\ndef save_webpage_as_text(url, output_filename):\n    # Send a GET request to the URL\n    response = requests.get(url)\n    \n    # Initialize BeautifulSoup to parse the content\n    soup = BeautifulSoup(response.text, 'html.parser')\n    \n    # Extract text from the BeautifulSoup object\n    # You can adjust the elements you extract based on your needs\n    text = soup.get_text(separator='\\n', strip=True)\n    \n    # Save the extracted text to a file\n    with open(output_filename, 'w', encoding='utf-8') as file:\n        file.write(text)\n    \n    # Return the file path\n    return output_filename\n\n# Example usage\n# url = 'https://microsoft.github.io/autogen/blog/2023/12/01/AutoGenStudio/'\n# output_filename = 'webpage_content.txt'\n# file_path = save_webpage_as_text(url, output_filename)\n# print(\"File saved at:\", file_path)\n\n# For a list of urls\n# urls = ['http://example.com', 'http://example.org']\n# for i, url in enumerate(urls):\n#     output_filename = f'webpage_content_{i}.txt'\n#     save_webpage_as_text(url, output_filename)",
+    "description": "Scrape a web page and save it as a text file.",
+    "libraries": []
+}
